@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class SomeCredentials {
     private String user;
     private String password;
+    private String otherSecret;
 
     public String getUser() {
         return user;
@@ -23,5 +24,13 @@ public class SomeCredentials {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getOtherSecret() {
+        return otherSecret;
+    }
+
+    public void setOtherSecret(String otherSecret) {
+        this.otherSecret = otherSecret;
     }
 }

@@ -12,13 +12,21 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 public class AccessingSomeEnvVariablesTests {
 
-	@Autowired
-	private SomeCredentials someCredentials;
+    @Autowired
+    private SomeCredentials someCredentials;
 
-	@Test
-	public void test() {
-		assertEquals("Bob", someCredentials.getUser());
-		assertEquals("topsecret", someCredentials.getPassword());
-	}
+    @Test
+    public void testAccessingEnvironmentVariables() {
+        assertEquals("Bob", someCredentials.getUser());
+        assertEquals("topsecret", someCredentials.getPassword());
+    }
+
+    /**
+     * travis encrypt SOME_OTHER_SECRET=super_secret --add env.global
+     */
+    @Test
+    public void testAccessingEncryptedEnvVariableFromTravisYaml() {
+        assertEquals("super_secret", someCredentials.getOtherSecret());
+    }
 
 }
