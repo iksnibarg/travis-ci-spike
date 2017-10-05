@@ -2,3 +2,16 @@ language: java
 env:
   global:
     secure: N12bgmCyHzb548dDskG5J63PDsXom4KP5XugR20SG16B+/H9XzcwHvszLIhTB0bIjVsiwtqNv26mJKkhq0MZ5+Qy34+8zBqeI7eMx1xFxffhR3aLjjQ4OgEE8sBzS8OfQpaXpceLxq/epyoeNkaE89ZUyUUT4d2U0UqSC1BdHXXXGqj8aMy1QM1I56PYUCv0qlQIv3f3fLlz1ZhZsIUiaGthf4zkmS86Eg5LI4PYO2kiteYxMMgpP6y6BD7BOyMVYllmRO790bjkVfvJEZBmvm/0poQoLrvGC2DmBS5VXpHxLCWwI4HRv9XhuuUKu7W3UP5M/ycQFZEz2dWebhp3MEIsklFUPU1BJx21Psit7t5vlkVMtQKHM563UFbvLEqZ5x6XwtEyiVU77hAxwk3ie8iuhgauZMjsflF9fWv5X4Z8dHR6ayeWxyk+sKcv1fvant34FIP7+fLrhqFv0UFjYGr14rH0sRn1DQ+08aneQLnFfmE/Lt3s1BdOSlDaeBHrYWpr4CZrfz3C06aF6KuKJbdwbBCDQ5MOJCb3/8cRY0Qxaw1ioMBmOxNFdF2eHQ91AttYIfr8Fl9t33abMAq+yliXHkZDDNYZPo857ryj7KgnCgbsYYirIYXHpWgNToI47vm8qNkw1Oq0X10K0Fl0Q3/LTm+cklr1RF8MU6LsI+w=
+
+addons:
+  sonarcloud:
+    organization: "iksnibarg-github"
+
+script:
+  # JaCoCo is used to have code coverage, the agent has to be activated
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
